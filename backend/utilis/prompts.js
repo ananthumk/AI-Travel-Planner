@@ -1,4 +1,4 @@
-// utils/prompts.js
+
 const ALLOWED_TIMES = ['Morning', 'Afternoon', 'Evening'];
 const ALLOWED_PACKING_CATEGORIES = ['Documents', 'Clothing', 'Gear', 'Other'];
 

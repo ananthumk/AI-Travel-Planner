@@ -35,10 +35,6 @@ async function callGemini(systemInstruction, userPrompt, responseSchema = null) 
     let lastError
     let delayMs = 1000
 
-    // NOTE: retries on ANY failure, including a bad API key (HTTP 400) - this
-    // is intentional and matches the assignment's own test ("set an invalid
-    // key, observe progressive retries before the graceful error"). Don't
-    // re-add a "fatal, don't retry" branch for 4xx errors, or that test fails.
     while (attempt < MAX_RETRIES) {
         try {
             const response = await fetch(url, {

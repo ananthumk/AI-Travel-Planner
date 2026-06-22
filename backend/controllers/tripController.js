@@ -32,7 +32,7 @@ const createTrip = asyncHandler(async (req, res) => {
   }
   const safeInterests = Array.isArray(interests) ? interests : [];
 
-  // Create a draft row first so user input is never lost even if the AI call fails
+  
   const trip = await Trip.create({
     userId: req.user._id,
     destination,
@@ -75,18 +75,16 @@ const getTrips = asyncHandler(async (req, res) => {
   res.json(trips);
 });
 
-// @route   GET /api/trips/:id
-// @access  Private
+// GET /api/trips/:id
+// Private
 const getTripById = asyncHandler(async (req, res) => {
   const trip = await getOwnedTripOr404(req.params.id, req.user._id, res);
   res.json(trip);
 });
 
-// @route   PUT /api/trips/:id
-// @access  Private
-// @body    { itinerary?, packingList? }  (send only the array you changed)
-// Whitelisted on purpose - never spread req.body directly onto the
-// document, or a client could overwrite userId/estimatedBudget/etc.
+// PUT /api/trips/:id
+// Private
+
 const updateTrip = asyncHandler(async (req, res) => {
   const trip = await getOwnedTripOr404(req.params.id, req.user._id, res);
 
@@ -106,19 +104,15 @@ const updateTrip = asyncHandler(async (req, res) => {
   res.json(updated);
 });
 
-// @route   DELETE /api/trips/:id
-// @access  Private
+//   DELETE /api/trips/:id
+
 const deleteTrip = asyncHandler(async (req, res) => {
   const trip = await getOwnedTripOr404(req.params.id, req.user._id, res);
   await trip.deleteOne();
   res.json({ message: 'Trip deleted' });
 });
 
-// @route   POST /api/trips/:id/regenerate-day
-// @access  Private
-// @body    { dayNumber: number, feedback: "Change Day 3 to outdoor hiking instead of shopping" }
-// This is the one operation a plain PUT can't do, since it needs to call
-// the LLM, not just persist client-supplied data.
+
 const regenerateDay = asyncHandler(async (req, res) => {
   const trip = await getOwnedTripOr404(req.params.id, req.user._id, res);
   const { dayNumber, feedback } = req.body;

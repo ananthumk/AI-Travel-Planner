@@ -2,10 +2,7 @@ const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
 
-// Protects any route it is attached to. Expects:
-//   Authorization: Bearer <token>
-// On success: req.user = { _id, name, email }  (password never attached)
-// On failure: responds 401 immediately, route handler never runs.
+
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
