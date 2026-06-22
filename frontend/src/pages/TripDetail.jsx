@@ -7,7 +7,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorState from '../components/ErrorState';
 import api from '../api/client';
 
-// status: 'loading' | 'error' | 'success'
 export default function TripDetailPage() {
   const { id } = useParams();
   const [trip, setTrip] = useState(null);

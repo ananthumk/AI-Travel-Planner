@@ -5,7 +5,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorState from '../components/ErrorState';
 import api from '../api/client';
 
-// status: 'loading' | 'error' | 'success'
 export default function DashboardPage() {
   const [status, setStatus] = useState('loading');
   const [trips, setTrips] = useState([]);

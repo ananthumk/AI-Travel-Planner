@@ -54,7 +54,7 @@ export default function RegisterPage() {
             <input
               type="password"
               required
-              minLength={6}
+              minLength={8}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full border outline-0 border-sandline rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-coral"
