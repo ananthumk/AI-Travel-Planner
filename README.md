@@ -38,6 +38,8 @@ PORT=4000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 GEMINI_API_KEY=your_gemini_api_key
+JWT_EXPIRES=7d
+GEMINI_MODEL=gemini_model
 CLIENT_ORIGIN=http://localhost:5173
 ```
 
